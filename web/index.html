@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>tolet</title>
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/responsee.css">
+        <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+        <link rel="stylesheet" href="css/lightcase.css">
+        <!-- CUSTOM STYLE -->      
+        <link rel="stylesheet" href="css/template-style.css">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,400,600,900&subset=latin-ext" rel="stylesheet"> 
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+        <script >
+
+            var app = angular.module('myApp', ['ngAnimate']);
+            app.controller('myCtrl', function ($scope, $http, $interval) {
+                $scope.allflat = [];
+                $scope.addFlatform = {
+
+                    name: "",
+                    location: "",
+                    address: "",
+                    contact: "",
+                    floorNo: "",
+                    flatSize: "",
+                    badRoom: "",
+                    bathroom: "",
+                    drowingroom: "",
+                    diningroom: "",
+                    balcony: "",
+                    myVar: true,
+
+                };
+                getall();
+//                $scope.addflatditails = function () {
+//                    $http({
+//                        method: 'POST',
+//                        url: 'http://localhost:8080/Tolet_1/rest/flats',
+//                        data: angular.toJson($scope.addFlatform),
+//                        headers: {
+//                            'Content-Type': 'application/json'
+//                        }
+//                    }).then(success);
+//                };
+                function getall() {
+                    $http.get("http://localhost:8080/Tolet_1/rest/flats")
+                            .then(function (response) {
+                                $scope.allflat = response.data;
+                            }, function (response) {
+                                $scope.allflat = "Something went wrong";
+                            });
+                }
+                ;
+//                function success(response) {
+//                    getall();
+//                    clear();
+//                }
+//
+//                function clear() {
+//                    $scope.userform.uname = "";
+//                    $scope.userform.email = "";
+//                    $scope.userform.password = "";
+//                    $scope.addFlatform.name = "",
+//                            $scope.addFlatform.location = "";
+//                    $scope.addFlatform.address = "";
+//                    $scope.addFlatform.contact = "";
+//                    $scope.addFlatform.floorNo = "";
+//                    $scope.addFlatform.flatSize = "";
+//                    $scope.addFlatform.badRoom = "";
+//                    $scope.addFlatform.bathroom = "";
+//                    $scope.addFlatform.drowingroom = "";
+//                    $scope.addFlatform.diningroom = "";
+//                    $scope.addFlatform.balcony = "";
+//                }
+//                ;
+
+
+               
+                $scope.Date = new Date().toLocaleTimeString();
+
+
+                $interval(function () {
+
+                   
+                    $scope.Date = new Date().toLocaleString();
+
+                }, 1000);
+            });
+
+
+        </script>
+        <style>
+            .clsScroll{
+                height: 600px;
+                width: 700px;
+                background-color:lightgrey;
+                overflow: scroll;
+
+
+            } 
+            .ng-show{
+                background-color:yellowgreen;
+                height:auto;
+                width: 700px;
+
+
+
+            }
+
+        </style>
+
+
+    </head>
+
+    <body class="size-1140" ng-app="myApp" ng-controller="myCtrl">
+        <div id="page-wrapper">
+            <!-- HEADER -->
+            <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
+                <!-- Top Navigation -->
+                <nav class="background-dark-hightlight background-primary full-width sticky">
+                    <div class="s-12 l-2">
+                        <a href="index.html" class="logo">
+                            <!-- Logo version before sticky nav -->
+                            <h3 class="logo-before">To-Let</h3>
+                            <!-- Logo version after sticky nav -->
+                            <h3 class="logo-after" >To-Let</h3>
+                        </a>
+                    </div>
+                    <div class="s-12 l-10">
+                        <div class="top-nav right">
+                            <h2 class="nav-text"></h2>
+                            <ul class="right chevron">
+                                <li ><a href="index.html" class="text-l-size-16">Home</a></li>
+                                <li><a href="about-us.html" class="text-l-size-16">About Us</a></li>             
+                                <li><a href="contact.html" class="text-l-size-16">Contact</a></li>
+                              
+                             
+
+
+
+
+                            </ul>
+                        </div>
+                    </div>  
+                </nav>
+            </header>
+
+            <!-- MAIN -->
+            <main role="main">
+                <!-- Content -->
+                <article>
+                    <header class="section background-dark  ">
+                        <h2>{{ Date}}</h2>
+
+
+                        <div class="line text-center " >  
+
+                            <h1 class="text-primary-hover text-s-size-30 text-m-size-40 text-l-size-headline text-thin text-line-height-1 ">To-Let</h1>
+                            <h2 class="margin-bottom-0 text-size-30 text-primary-hover">Hire Every Things !!!<br> What's are you need? </h2>
+                        </div>  
+
+                    </header>
+                    <div class=" full-width"> 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-3 ">
+
+                                    <table class="table table-hover table-responsive table-bordered">
+                                        <tr>
+                                            <th>   
+                                                <h3>Create Your Advertisement </h3>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <form>
+                                                    <h3> Select a topic <br>
+                                                        <select ng-model="myVar">
+                                                            <option value="house">House
+                                                            <option value="office">Office
+                                                            <option value="vehicles">vehicles
+                                                        </select>
+                                                    </h3>
+                                                </form>
+                                                <div ng-switch="myVar">
+                                                    <div ng-switch-when="house">
+                                                        <ul>
+                                                            <li><a href="contact.html" class="text-l-size-20">Building</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Floor</a> </li>
+                                                            <li><a href="addFlat.html" class="text-l-size-20">Flat</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Room</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Sublet</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Seat</a> </li>
+                                                        </ul> 
+                                                    </div>
+                                                    <div ng-switch-when="office">
+                                                        <ul>
+                                                            <li><a href="contact.html" class="text-l-size-20">Building</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Floor</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Flat</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Showroom</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Shop</a> </li>
+                                                        </ul> 
+                                                    </div>
+                                                    <div ng-switch-when="vehicles">
+                                                        <ul>
+                                                            <li><a href="contact.html" class="text-l-size-20">Track</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Bus</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Mycrowbus</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">CNG</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Leguna</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Taxi</a>
+                                                            <li><a href="contact.html" class="text-l-size-20">Mycrowbus</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">CNG</a> </li>
+                                                            <li><a href="contact.html" class="text-l-size-20">Leguna</a> </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>   
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div>
+
+
+                                        <button class="btn btn-success" type="button" data-target="#registration" data-toggle="modal">Create Account</button>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <button class="btn btn-success" type="button" data-target="#login" data-toggle="modal">Sign In</button>
+
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-sm-9 " >
+                                    <h2> Show all advertisement: <input type="checkbox" ng-model="addFlatform.myVar" /></h2> 
+                                    <div ng-show="addFlatform.myVar">
+                                        <input type="text" ng-model="test" class="form-control" placeholder="Search by location" /><br>
+
+                                        <div class="clsScroll">
+                                            <table class="table table-hover table-responsive table-bordered">
+                                                <tr>
+                                                    <th>   
+                                                        <h3>Details </h3>
+                                                    </th>
+                                                </tr>
+
+                                                <tr ng-repeat="showflat in allflat| filter:test| orderBy:'location'">
+                                                    <td> 
+                                                        <div class=" line text-center text-white-hover text-uppercase background-dark">
+                                                            <h2 >To-Let</h2>
+
+
+                                                        </div>
+
+                                                        <h5>Rental Name : {{ showflat.name}}</h5>
+
+                                                        <h5> Rental Location :  {{ showflat.location}}</h5>
+                                                        <h5> Rental Address :{{ showflat.address}}</h5>
+                                                        <h5>Rent contact : {{ showflat.contact}}</h5>
+
+                                                        <h3>Show Details <input type="checkbox" ng-model="myCheck"></h3>
+
+
+                                                        <div  ng-show="myCheck">  
+
+
+                                                            <h5> Floor No :{{ showflat.floorNo}}</h5>
+                                                            <h5> Flat Size :{{ showflat.flatSize}}</h5>
+                                                            <h5>Bad Room: {{ showflat.badRoom}}</h5>
+                                                            <h5>Bathroom:{{ showflat.bathroom}}</h5>
+                                                            <h5> Drowing room :{{ showflat.drowingroom}}</h5>
+                                                            <h5> Diningroom :{{ showflat.diningroom}}</h5>
+                                                            <h5>Balcony :  {{ showflat.balcony}}</h5>
+
+                                                        </div>
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--start form registration model-->
+                    <div class="modal fade" id="registration" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+
+                                <form >
+                                    <div class="modal-header">
+                                        <h1 class="modal-title text-dark">Registration Form</h1>
+                                        <button class="close" type="button" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="name"><b>Name  :</b></label>
+                                            <input type="text" class="form-control" id="name" name="name"/>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label for="address" ><b>Address  :</b></label>
+                                            <input type="text" class="form-control" id="address" name="address"/>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="phone"><b>Phone  :</b></label>
+                                            <input type="number" class="form-control" id="phone" name="phone"/>
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="national"><b>National Id No  :</b></label>
+                                            <input type="text" class="form-control"  name="national"/>
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="nationality"><b>Nationality  :</b></label>
+                                            <input type="text" class="form-control" id="nationality" name="nationality"/>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="dateofbirth"><b>Date Of Birth  :</b></label>
+                                            <input type="date" class="form-control" />
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="gender"><b>Gender  :</b></label>
+                                            <input type="radio" name="gender" value="male">Male
+                                            <input type="radio" name="gender" value="female">Female
+
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="divission"><b>Divission  :</b></label>
+                                            <select name="divission" id="divission" class="form-control">
+                                                <option value="Dhaka">Dhaka</option>
+                                                <option value="Chittogon">Chittogon</option>
+                                                <option value="Khulna">Khulna</option>
+                                                <option value="Barisel">Barisel</option>
+                                                <option value="Syllet">Syllet</option>
+                                                <option value="Rongpur">Rongpur</option>
+                                                <option value="Rajshahi">Rajshahi</option>
+                                                <option value="Mymansing">Mymansing</option>
+
+
+
+                                            </select>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email"><b>Email  :</b></label>
+                                            <input type="email" class="form-control" id="email" name="email"/>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="region"><b>Region  :</b></label>
+                                            <input type="radio" name="regeion" value="regeion"/>Islam
+                                            <input type="radio"  name="regeion" value="regeion"/>Hindu
+                                            <input type="radio"  name="regeion" value="regeion"/>Kristan
+                                            <input type="radio"  name="regeion" value="regeion"/>Boddist
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <label for="save"></label>
+                                        <input type="submit" name="save" value="LogIn" class="btn btn-outline-success">
+                                        <input type="reset" name="reset" value="Reset" class="btn btn-outline-warning">
+
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>	
+                    <!--end-->
+                    <!--start login model-->
+                    <div class="modal fade" id="login" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form >
+                                    <div class="modal-header">
+                                        <h1 class="modal-title text-dark">LogIn</h1>
+                                        <button class="close" type="button" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="email"><b>Email</b></label>
+                                            <input type="text" class="form-control" id="mail" name="mail"/>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label for="password" ><b>Password</b></label>
+                                            <input type="password" class="form-control" id="password" name="password"/>
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <label for="save"></label>
+                                        <input type="submit" name="save" value="LogIn" class="btn btn-outline-success">
+                                        <input type="reset" name="reset" value="Reset" class="btn btn-outline-warning">
+
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!--end-->
+                </article>
+            </main>
+
+
+            <!-- FOOTER -->
+            <footer>
+                <!-- Contact Us -->
+                <div class="background-dark padding text-center footer-social">
+                    <a class="margin-right-10" target="_blank" href="https://www.facebook.com"><i class="icon-facebook_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">FACEBOOK</span></a>
+                    <a class="margin-right-10" target="_blank" href="https://www.twitter.com"><i class="icon-twitter_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">TWITTER</span></a>
+                    <a class="margin-right-10" target="_blank" href="https://www.instagram.com"><i class="icon-instagram_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">INSTAGRAM</span></a>
+                    <a target="_blank" href="https://www.linkedin.com"><i class="icon-linked_in_circle text-size-30"></i> <span class="text-strong text-white hide-s hide-m">LINKEDIN</span></a>                                                                         
+                </div>
+
+                <!-- Main Footer -->
+                <section class="section-small-padding text-center background-dark full-width">
+                    <div class="line">
+                        <div class="margin">
+                            <!-- Collumn 1 -->              
+                            <div class="s-12 m-12 l-4 margin-m-bottom-30">
+                                <h3 class="text-size-16">Company Address</h3>
+                                <p class="text-size-14">
+                                    Responsive Street 7<br>
+                                    London - United Kingdom<br> 
+                                    Europe
+                                </p>               
+                            </div>
+                            <!-- Collumn 2 -->
+                            <div class="s-12 m-12 l-4 margin-m-bottom-30">
+                                <h3 class="text-size-16">E-mail</h3>
+                                <p class="text-size-14">
+                                    contact@sampledomain.com<br>
+                                    office@sampledomain.com
+                                </p>              
+                            </div>
+                            <!-- Collumn 3 -->
+                            <div class="s-12 m-12 l-4 ">
+                                <h3 class="text-size-16">Phone Numbers</h3>
+                                <p class="text-size-14">
+                                    0800 4521 800 50<br>
+                                    0450 5896 625 16<br>
+                                    0798 6546 465 15
+                                </p>             
+                            </div>
+                        </div>
+                    </div>  
+                </section>
+                <hr class="break margin-top-bottom-0" style="border-color: rgba(0, 0, 0, 0.80);">
+
+                <!-- Bottom Footer -->
+                <section class="padding background-dark full-width">
+                    <div class="text-center">
+                        <p class="text-size-12">Copyright 2018, Vision Design - graphic zoo</p>
+                        <p class="text-size-12">All images is purchased from Bigstock. Do not use the images in your website.</p>
+                    </div>
+                </section>
+            </footer>
+        </div>
+        <script type="text/javascript" src="js/responsee.js"></script>
+        <script type="text/javascript" src="js/jquery.events.touch.js"></script>
+        <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
+        <script type="text/javascript" src="js/template-scripts.js"></script> 
+    </body>
+</html>
